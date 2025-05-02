@@ -1,5 +1,5 @@
 ## Dom Test
-# Ser 1
+# Set 1
 - this has the font, color and size changer
 - the click counter
 - the togle password option 
