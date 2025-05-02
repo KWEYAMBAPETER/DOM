@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document5</title>
+</head>
+<body>
+    <script>
+        
+        function longestCommonPrefix(strs) {
+    if (!strs.length) return "";
+
+    let prefix = strs[0]; // Start with the first string
+
+    for (let i = 1; i < strs.length; i++) {
+        while (strs[i].indexOf(prefix) !== 0) {
+            prefix = prefix.slice(0, -1); // Shrink prefix
+            if (prefix === "") return "";
+        }
+    }
+
+    return prefix;
+}
+console.log(longestCommonPrefix(["flower", "flow", "flight"])); // Output: "fl"
+console.log(longestCommonPrefix(["dog", "racecar", "car"]));    // Output: ""
+
+
+    </script>
+</body>
+</html>

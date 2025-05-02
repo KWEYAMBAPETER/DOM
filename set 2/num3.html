@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>numb3</title>
+</head>
+<body>
+    <script>
+        function majorityElement(nums) {
+            
+    const count = {};//empty obj(count) to track how many times @ num appears
+    for (let num of nums) {//loop thru nums
+        count[num] = (count[num] || 0) + 1;//+the count for @ num
+        if (count[num] > Math.floor(nums.length / 2)) {
+            return num;// returns the num exceeds n/2 immediately
+        }
+    }
+}
+console.log(majorityElement([8, 7, 8])); 
+
+
+    </script>
+</body>
+</html>

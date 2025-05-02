@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>number-0ne</title>
+</head>
+<body>
+    
+    <script>
+        
+        function processArray(arr) {
+    function insertionSort(array, compare) {
+        let arrCopy = [...array];
+        for (let i = 1; i < arrCopy.length; i++) {
+            let current = arrCopy[i];
+            let j = i - 1;
+            while (j >= 0 && compare(arrCopy[j], current) > 0) {
+                arrCopy[j + 1] = arrCopy[j];
+                j--;
+            }
+            arrCopy[j + 1] = current;
+        }
+        return arrCopy;
+    }
+
+    let evens = [];
+    let odds = [];
+    let chars = [];
+
+    for (let element of arr) {
+        if (typeof element === 'string' && element.length === 1) {
+            chars.push(element);
+        } else if (typeof element === 'number') {
+            if (Number.isInteger(element)) {
+                if (element % 2 === 0) {
+                    evens.push(element);
+                } else {
+                    odds.push(element);
+                }
+            }
+        }
+    }
+
+    evens = insertionSort(evens, (a, b) => a - b);
+    odds = insertionSort(odds, (a, b) => a - b);
+    chars = insertionSort(chars, (a, b) => a.charCodeAt(0) - b.charCodeAt(0));
+
+    return { evens, odds, chars };
+}
+    </script>
+</body>
+</html>
