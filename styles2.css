@@ -1,0 +1,79 @@
+:root {
+    --bg-color: #fff;
+    --text-color: #333;
+    --border-color: #ccc;
+}
+
+
+    
+
+
+.dark-theme {
+    --bg-color: #333;
+    --text-color: #fff;
+    --border-color: #666;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.section {
+    margin: 30px 0;
+    padding: 20px;
+    border: 1px solid blue;
+    border-radius: 5px;
+}
+
+/* List Manager Styles */
+#listContainer {
+    margin: 10px 0;
+    width: 50%;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid var(--border-color);
+}
+
+/* Image Carousel Styles */
+.carousel {
+    position: relative;
+    max-width: 600px;
+    margin: 20px 0;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Theme Switcher */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    cursor: pointer;
+}

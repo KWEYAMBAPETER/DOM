@@ -1,0 +1,23 @@
+
+        .section {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #2604e7;
+            border-radius: 5px;
+        }
+        .text-block {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #15a835;
+        }
+        .counter-section {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .password-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+    

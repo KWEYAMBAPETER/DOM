@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test-one</title>
+    <link rel="stylesheet" href="./styles1.css">
+</head>
+<body>
+    <!-- Text Stylers -->
+    <div class="section">
+        <h2>Text  Stylers</h2>
+        <select id="fontSize">
+            <option value="16px">16px</option>
+            <option value="20px">20px</option>
+            <option value="24px">24px</option>
+            <option value="30px">30px</option>
+            <option value="50px">50px</option>
+            <option value="70px">70px</option>
+            <option value="128px">128px</option>
+        </select>
+        
+        <select id="fontColor">
+            <option value="Black">Black</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="Teal">Teal</option>
+            <option value="Orange">Orange</option>
+            <option value="green">Green</option>
+            <option value="Orangered">Orangered</option>
+            <option value="Gold">Gold</option>
+            <option value="Silver">Silver</option>
+            <option value="indigo">indigo</option>
+        </select>
+        
+        <select id="fontFamily">
+            <option value="Arial">Arial</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Courier New">Courier New</option>
+            <option value="webdings">Webdings</option>
+            <option value="poppins">Poppins</option>
+            <option value="raleway">Raleway</option>
+            <option value="Algerian">Algerian</option>
+            <option value="Arial Black">Arial Black</option>
+            <option value="Chiller">Chiller</option>
+        </select>
+        
+        
+        <div class="text-block" id="targetText">
+            <p>Hello! This is a paragraph that will be affected. Thanks</p>
+        </div>
+    </div>
+
+    <!-- Click Counter -->
+    <div class="section">
+        <h2> Click Tracking</h2>
+        <div class="counter-section">
+            <button onclick="incrementCounter()">Click Me</button>
+            <span>Number of Clicks: <span id="clickCount">0</span></span>
+        </div>
+    </div>
+
+    <!-- Password in put -->
+    <div class="section">
+        <h2> Password Field</h2>
+        <div class="password-container">
+            <input type="password" id="passwordInput" placeholder="Enter your password">
+            <!-- Toggle section -->
+            <label>
+                <input type="checkbox" id="showPassword" onchange="togglePassword()">
+                Show/Hide Password
+            </label>
+        </div>
+    </div>
+
+    <!-- Character Counter with warning -->
+    <div class="section">
+        <h2> Message writer here </h2>
+        <textarea 
+            id="messageInput" 
+            rows="4" 
+            cols="50" 
+            maxlength="200"
+            oninput="updateCounter()"
+            placeholder="What's on your Mind Today? (max 200 characters)"
+        ></textarea>
+        <div id="charCounter">200 characters left</div>
+    </div>
+
+    <script>
+        // Text Style Changer
+        let textBlock = document.getElementById('targetText');
+        document.getElementById('fontSize').onchange = (e) => 
+            textBlock.style.fontSize = e.target.value;
+        document.getElementById('fontColor').onchange = (e) => 
+            textBlock.style.color = e.target.value;
+        document.getElementById('fontFamily').onchange = (e) => 
+            textBlock.style.fontFamily = e.target.value;
+
+        // Click Counter
+        let count = 0;
+        function incrementCounter() {
+            document.getElementById('clickCount').textContent = ++count;
+
+        }
+        function resetCounter(){
+            count = 0;
+            document.getElementById("clickCount").textContent = count
+        }
+
+        // Password Toggle
+        function togglePassword() {
+            let passwordInput = document.getElementById('passwordInput');
+            passwordInput.type = document.getElementById('showPassword').checked ? 'text' : 'password';
+        }
+
+        // Character Counter
+        function updateCounter() {
+            let textArea = document.getElementById('messageInput');
+            let remaining = 200 - textArea.value.length;
+            document.getElementById('charCounter').textContent = 
+                `${remaining} characters left.`;
+                
+        }
+    </script>
+</body>
+</html>

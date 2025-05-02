@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM-Set 2</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles2.css" />
+  </head>
+  <body>
+    <!-- ===Theme Switcher======== -->
+    <button class="theme-toggle" onclick="toggleTheme()">change Theme</button>
+
+    <!-- Dynamic List Manager -->
+    <div class="section">
+      <h2>My List</h2>
+      <input type="text" id="listInput" placeholder="Enter item" />
+      <button onclick="addItem()">Add Item</button>
+      <div id="listContainer"></div>
+    </div>
+
+    <!--searchable table----->
+    <div class="section">
+      <h2>My Table</h2>
+      <input type="text" id="searchInput" placeholder="Search here" />
+
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Class</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John Smith</td>
+            <td>7</td>
+            <td>P.1</td>
+          </tr>
+          <tr>
+            <td>Jotham Kikuyu</td>
+            <td>8</td>
+            <td>P.7</td>
+          </tr>
+          <tr>
+            <td>Babra Wilson</td>
+            <td>9</td>
+            <td>P.6</td>
+          </tr>
+          <tr>
+            <td>Alice K Onina</td>
+            <td>7</td>
+            <td>P.5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Image Carousel -->
+    <div class="section">
+      <h2>My Image Carousel</h2>
+      <div class="carousel">
+        <img
+          class="carousel-img"
+          id="currentImage"
+          src="./images/mad max.jpg"
+          alt="logo"
+        />
+
+        <!-- NavBtns -->
+        <button class="carousel-btn prev" onclick="prevImage()">❮</button>
+        <button class="carousel-btn next" onclick="nextImage()">❯</button>
+      </div>
+    </div>
+
+    <script>
+      //  List Manager functions
+      let items = []; // stores all items
+
+      function addItem() {
+        const input = document.getElementById("listInput");
+        if (input.value.trim()) {
+          items.push(input.value);
+          input.value = "";
+          renderList();
+        }
+      }
+
+      function deleteItem(index) {
+        items.splice(index, 1);
+        renderList();
+      }
+
+      function editItem(index) {
+        const newText = prompt("Edit item:", items[index]);
+        if (newText !== null) items[index] = newText;
+        renderList();
+      }
+
+      function renderList() {
+        const container = document.getElementById("listContainer");
+        container.innerHTML = items
+          .map(
+            (item, index) => `
+                <div class="list-item">
+                    <span ondblclick="editItem(${index})">${item}</span>
+                    <button onclick="deleteItem(${index})">Remove</button>
+                </div>
+            `
+          )
+          .join("");
+      }
+
+      // Filter Table Rows
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", function (e) {
+          let filter = e.target.value.toLowerCase();
+          let rows = document.querySelectorAll("#dataTable tr");
+
+          rows.forEach((row, index) => {
+            if (index === 0) return; // Skip the table header
+            let text = row.textContent.toLowerCase();
+            row.style.display = text.includes(filter) ? "" : "none";
+          });
+        });
+
+      //  Image Carousel
+      let images = [
+        "./images/showshank.jpg",
+        "./images/parasite1.jpg",
+        "./images/mission impossible.jpg",
+      ];
+      let currentImageIndex = 0;
+
+      function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        updateCarousel();
+      }
+
+      function prevImage() {
+        currentImageIndex =
+          (currentImageIndex - 1 + images.length) % images.length;
+        updateCarousel();
+      }
+
+      function updateCarousel() {
+        document.getElementById("currentImage").src = images[currentImageIndex];
+      }
+
+      //  Theme Switcher
+      function toggleTheme() {
+        document.body.classList.toggle("dark-theme");
+        localStorage.setItem(
+          "theme",
+          document.body.classList.contains("dark-theme") ? "dark" : "light"
+        );
+      }
+
+      // Load saved theme in the local storage
+      let savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.body.classList.add("dark-theme");
+    </script>
+  </body>
+</html>
