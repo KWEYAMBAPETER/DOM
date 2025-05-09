@@ -1,5 +1,12 @@
+:root {
+    --bg-color: #f3f3f4;
+    --text-color: #120101;
+    --border-color: #ccc;
+}
 
-        .section {
+       
+
+       .section {
             margin: 20px;
             padding: 20px;
             border: 1px solid #2604e7;

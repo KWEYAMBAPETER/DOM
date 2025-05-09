@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./styles2.css" />
   </head>
   <body>
-    <!-- ===Theme Switcher======== -->
+    <!-----------Theme switcher -->
     <button class="theme-toggle" onclick="toggleTheme()">change Theme</button>
 
     <!-- Dynamic List Manager -->
@@ -25,7 +25,10 @@
     <!--searchable table----->
     <div class="section">
       <h2>My Table</h2>
-      <input type="text" id="searchInput" placeholder="Search here" />
+      <input type="text" id="searchInput"
+      
+      placeholder=" Search......" /> 
+      
 
       <table id="dataTable">
         <thead>
@@ -33,6 +36,7 @@
             <th>Name</th>
             <th>Age</th>
             <th>Class</th>
+            <th>Home</th>
           </tr>
         </thead>
         <tbody>
@@ -40,21 +44,26 @@
             <td>John Smith</td>
             <td>7</td>
             <td>P.1</td>
+            <td>Abim</td>
           </tr>
           <tr>
             <td>Jotham Kikuyu</td>
             <td>8</td>
             <td>P.7</td>
+            <td>Amorata</td>
           </tr>
           <tr>
             <td>Babra Wilson</td>
             <td>9</td>
             <td>P.6</td>
+            <td>Wakiso</td>
           </tr>
           <tr>
             <td>Alice K Onina</td>
             <td>7</td>
             <td>P.5</td>
+            <td>Kasese</td>
+            
           </tr>
         </tbody>
       </table>
@@ -71,9 +80,9 @@
           alt="logo"
         />
 
-        <!-- NavBtns -->
-        <button class="carousel-btn prev" onclick="prevImage()">❮</button>
-        <button class="carousel-btn next" onclick="nextImage()">❯</button>
+        <!-- NavBtns  of the carousel-->
+        <button class="carousel-btn prev" onclick="prevImage()"><i class='bx bx-chevrons-left'></i></button>
+        <button class="carousel-btn next" onclick="nextImage()"><i class='bx bx-chevrons-right'></i></button>
       </div>
     </div>
 
@@ -86,35 +95,40 @@
         if (input.value.trim()) {
           items.push(input.value);
           input.value = "";
-          renderList();
+          showList();
         }
       }
 
       function deleteItem(index) {
         items.splice(index, 1);
-        renderList();
+        showList();
       }
+      
 
       function editItem(index) {
-        const newText = prompt("Edit item:", items[index]);
+        const newText = prompt("Edit item here!:", items[index]);
         if (newText !== null) items[index] = newText;
-        renderList();
+        showList();
       }
+      function showList() {
+  // Find the container where we'll display our list
+  let listContainer = document.getElementById("listContainer");
+  
+  // Create HTML for each item in the list
+  const listHTML = items.map((item, index) => {
+    return `
+      <div class="list-item">
+        <span ondblclick="editItem(${index})">${item}</span>
+        <button onclick="deleteItem(${index})">Remove</button>
+      </div>
+    `;
+  }).join(""); // Combine all items into a single string string 
+  
+  // Put the generated HTML into the container
+  listContainer.innerHTML = listHTML;
+}
 
-      function renderList() {
-        const container = document.getElementById("listContainer");
-        container.innerHTML = items
-          .map(
-            (item, index) => `
-                <div class="list-item">
-                    <span ondblclick="editItem(${index})">${item}</span>
-                    <button onclick="deleteItem(${index})">Remove</button>
-                </div>
-            `
-          )
-          .join("");
-      }
-
+    
       // Filter Table Rows
       document
         .getElementById("searchInput")

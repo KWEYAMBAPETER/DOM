@@ -1,6 +1,6 @@
 :root {
-    --bg-color: #fff;
-    --text-color: #333;
+    --bg-color: #f3f3f4;
+    --text-color: #120101;
     --border-color: #ccc;
 }
 
@@ -77,3 +77,33 @@ body {
     padding: 10px;
     cursor: pointer;
 }
+
+    
+        
+        #searchInput {
+            padding: 8px;
+            width: 300px;
+            border: 1px solid #ebeb21;
+            border-radius: 4px;
+
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            border:1px solid #fdfd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #fdfd;
+        }
+        th {
+            background-color: #fbf5df;
+            font-weight: bold;
+            color: #070786;
+        }
+        tr:hover {
+            background-color: #F0F8FF;
+            color:rgb(11, 138, 96)
+        }
+        

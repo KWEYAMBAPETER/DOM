@@ -26,7 +26,7 @@
             <option value="blue">Blue</option>
             <option value="Teal">Teal</option>
             <option value="Orange">Orange</option>
-            <option value="green">Green</option>
+            <option value=" green">Green</option>
             <option value="Orangered">Orangered</option>
             <option value="Gold">Gold</option>
             <option value="Silver">Silver</option>
@@ -57,6 +57,7 @@
         <div class="counter-section">
             <button onclick="incrementCounter()">Click Me</button>
             <span>Number of Clicks: <span id="clickCount">0</span></span>
+            <button onclick="resetCounter()">Reset</button>
         </div>
     </div>
 
@@ -78,7 +79,7 @@
         <h2> Message writer here </h2>
         <textarea 
             id="messageInput" 
-            rows="4" 
+            rows="6" 
             cols="50" 
             maxlength="200"
             oninput="updateCounter()"
@@ -103,6 +104,7 @@
             document.getElementById('clickCount').textContent = ++count;
 
         }
+        //reset counter action
         function resetCounter(){
             count = 0;
             document.getElementById("clickCount").textContent = count
